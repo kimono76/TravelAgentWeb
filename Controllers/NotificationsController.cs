@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using TravelAgentWeb.Data;
 using System;
 using TravelAgentWeb.Dtos;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TravelAgentWeb.Controllers
 {
@@ -20,12 +22,14 @@ namespace TravelAgentWeb.Controllers
                 Console.ForegroundColor= ConsoleColor.Red;
                 Console.WriteLine("Invalid secret, ignore webhook");
                 Console.ResetColor();
+                return Ok();
             } else {
             
                 Console.ForegroundColor= ConsoleColor.Green;
                 Console.WriteLine("Valid webhook");
-                Console.WriteLine($"Old Price {flightDetailUpdateDto.OldPrice} New Price {flightUpdateDto.NewPrice}");
+                Console.WriteLine($"Old Price {flightDetailUpdateDto.OldPrice} New Price {flightDetailUpdateDto.NewPrice}");
                 Console.ResetColor();
+                return Ok();
             }
         }
     }
